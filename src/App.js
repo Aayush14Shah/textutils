@@ -1,22 +1,15 @@
 import "./App.css";
-
+import Navbar from "./Components/Navbar";
+import TextForm from "./Components/TextForm";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <Navbar title="Textutils aayush" /> */}
+      <Navbar />
+      <div className="container">
+        <TextForm heading="Enter your text to analyze" />
+      </div>
+    </>
   );
 }
 
