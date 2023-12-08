@@ -14,9 +14,22 @@ const TextForm = (props) => {
     let newText = text.toLowerCase();
     setText(newText);
   };
+  // const handleAlternateCase = (e) => {
+  //   e.preventDefault();
+  //   text.split("");
+  //   text.map((char, index) => {
+  //     return index % 2 === 0 ? char.toUpperCase() : char.toLowerCase();
+  //   });
+  //   text.join("");
+  // };
   const handleClearText = (e) => {
     e.preventDefault();
+    localStorage.setItem("myString", text);
     setText("");
+  };
+  const handleUndo = (e) => {
+    e.preventDefault();
+    setText(localStorage.getItem("myString"));
   };
   const handleSentence = (e) => {
     e.preventDefault();
@@ -35,6 +48,24 @@ const TextForm = (props) => {
     const capitalizedSentence = capitalizedWords.join(" ");
     setText(capitalizedSentence);
   };
+  const handleReverse = (e) => {
+    e.preventDefault();
+    /* Convert string to array*/
+    let strArr = text.split("");
+    /* Reverse array*/
+    strArr = strArr.reverse();
+    /* Convert array to string*/
+    let newText = strArr.join("");
+    setText(newText);
+  };
+  const [textWeight, setTextWeight] = useState("");
+  const handleBold = (e) => {
+    setTextWeight("Bold");
+  };
+  const [textStyle, setTextStyle] = useState("");
+  const handleItalic = (e) => {
+    setTextStyle("Italic");
+  };
   return (
     <>
       <div className="container">
@@ -45,6 +76,7 @@ const TextForm = (props) => {
             Textarea
           </label> */}
             <textarea
+              style={{ fontWeight: textWeight, fontStyle: textStyle }}
               type="text"
               placeholder="Enter text here..."
               value={text}
@@ -71,12 +103,19 @@ const TextForm = (props) => {
           >
             Convert to lowercase
           </button>
+          {/* <button
+            type="button"
+            onClick={handleAlternateCase}
+            className="btn btn-primary m-3"
+          >
+            Convert to alternateCase
+          </button> */}
           <button
             type="button"
             onClick={handleClearText}
             className="btn btn-primary m-3"
           >
-            clear text
+            Delete
           </button>
           <button
             type="button"
@@ -90,7 +129,35 @@ const TextForm = (props) => {
             onClick={handleIndividuals}
             className="btn btn-primary m-3"
           >
-            Word first letter to uppercase
+            Capitalize
+          </button>
+          <button
+            type="button"
+            onClick={handleReverse}
+            className="btn btn-primary m-3"
+          >
+            Reverse text
+          </button>
+          <button
+            type="button"
+            onClick={handleUndo}
+            className="btn btn-primary m-3"
+          >
+            Undo
+          </button>
+          <button
+            type="button"
+            onClick={handleBold}
+            className="btn btn-primary m-3"
+          >
+            Bold
+          </button>
+          <button
+            type="button"
+            onClick={handleItalic}
+            className="btn btn-primary m-3"
+          >
+            Italic
           </button>
         </form>
       </div>
@@ -101,8 +168,20 @@ const TextForm = (props) => {
           Sentence
         </p>
         <p>{0.008 * text.split(" ").length} minutes to read</p>
+
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p
+          style={{
+            padding: 10,
+            backgroundColor: "#1e517b",
+            color: "white",
+            // width: "auto",
+            // height: "auto",
+            // overflow: "scroll",
+          }}
+        >
+          {text.length > 0 ? text : "Enter something above to preview here"}
+        </p>
       </div>
     </>
   );
