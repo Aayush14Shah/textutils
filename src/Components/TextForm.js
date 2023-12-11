@@ -2,17 +2,18 @@ import React, { useState } from "react";
 
 const TextForm = (props) => {
   const [text, setText] = useState("");
-  const [rows, setRows] = useState(0);
+
   const handleUpperCaseClick = (e) => {
     e.preventDefault();
     let newText = text.toUpperCase();
     setText(newText);
-    console.log(newText);
+    props.showAlert("coverted to uppercase", "success");
   };
   const handleLowerCaseClick = (e) => {
     e.preventDefault();
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("coverted to lowercase", "success");
   };
   // const handleAlternateCase = (e) => {
   //   e.preventDefault();
@@ -32,9 +33,6 @@ const TextForm = (props) => {
     setText(localStorage.getItem("myString"));
   };
   const handleSentence = (e) => {
-    e.preventDefault();
-    if (text) setRows(1);
-
     let msg = new SpeechSynthesisUtterance();
     msg.text = text;
     window.speechSynthesis.speak(msg);
@@ -92,14 +90,26 @@ const TextForm = (props) => {
           <button
             type="button"
             onClick={handleUpperCaseClick}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            } "btn-success" m-3`}
           >
             Convert to uppercase
           </button>
           <button
             type="button"
             onClick={handleLowerCaseClick}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            } "btn-success" m-3`}
           >
             Convert to lowercase
           </button>
@@ -113,49 +123,91 @@ const TextForm = (props) => {
           <button
             type="button"
             onClick={handleClearText}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            }  m-3`}
           >
             Delete
           </button>
           <button
             type="button"
             onClick={handleSentence}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            }  m-3`}
           >
             Speak aloud
           </button>
           <button
             type="button"
             onClick={handleIndividuals}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            }  m-3`}
           >
             Capitalize
           </button>
           <button
             type="button"
             onClick={handleReverse}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            } m-3`}
           >
             Reverse text
           </button>
           <button
             type="button"
             onClick={handleUndo}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            }  m-3`}
           >
             Undo
           </button>
           <button
             type="button"
             onClick={handleBold}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            }  m-3`}
           >
             Bold
           </button>
           <button
             type="button"
             onClick={handleItalic}
-            className="btn btn-primary m-3"
+            className={`btn ${
+              props.mode === "red"
+                ? "btn-danger"
+                : props.mode === "green"
+                ? "btn-success"
+                : "btn-primary"
+            }  m-3`}
           >
             Italic
           </button>
@@ -164,8 +216,7 @@ const TextForm = (props) => {
       <div className="container">
         <h1>Your text summary </h1>
         <p>
-          {text.split(" ").length} words, {text.length} characters, {rows}{" "}
-          Sentence
+          {text.split(" ").length - 1} words, {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} minutes to read</p>
 
@@ -179,6 +230,14 @@ const TextForm = (props) => {
             // height: "auto",
             // overflow: "scroll",
           }}
+          className={
+            props.mode === "red"
+              ? "bg-danger"
+              : props.mode === "green"
+              ? "bg-success"
+              : "bg-#043b5c"
+          }
+          m-3
         >
           {text.length > 0 ? text : "Enter something above to preview here"}
         </p>

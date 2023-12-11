@@ -5,7 +5,9 @@ const Navbar = (props) => {
   return (
     <div>
       <nav
-        className={`navbar navbar-expand-lg  navbar-${props.mode} bg-${props.mode} `}
+        className={`navbar navbar-expand-lg  navbar-${
+          props.mode !== "light" ? "dark" : "light"
+        } bg-${props.mode !== "light" ? "dark" : "light"} `}
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
@@ -35,9 +37,31 @@ const Navbar = (props) => {
                 </a>
               </li>
             </ul>
-            <div class="form-check form-switch">
+            <div className="d-inline-flex ">
+              <div>
+                {/* red */}
+                <button
+                  className="bg-danger border border-4 border-danger rounded-circle px-2 py-1 m-1"
+                  style={{ width: "30px", height: "30px" }}
+                  onClick={props.toggleOtherMode}
+                ></button>
+              </div>
+              <div>
+                {/* green */}
+                <button
+                  className="bg-success border border-4 border-success rounded-circle px-2 py-1 m-1"
+                  style={{ width: "30px", height: "30px" }}
+                  onClick={props.toggleOtherMode2}
+                ></button>
+              </div>
+              {/* <div
+                className="bg-warning border border-4 border-warning rounded-circle px-2 py-1 m-1"
+                style={{ width: "30px", height: "30px" }}
+              ></div> */}
+            </div>
+            <div className="form-check form-switch">
               <input
-                className="form-check-input mx-3"
+                className="form-check-input mx-2"
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckDefault"
