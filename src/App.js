@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
-import Alert from "./Components/Alert";
+// import Alert from "./Components/Alert";
 // import About from "./Components/About";
 import { useState } from "react";
 function App() {
@@ -54,7 +54,7 @@ function App() {
         toggleOtherMode={toggleOtherMode}
         toggleOtherMode2={toggleOtherMode2}
       />
-      <Alert alert={alert} />
+      {/* <Alert alert={alert} /> */}
       <div className="container">
         <TextForm
           heading="Enter your text to analyze"
