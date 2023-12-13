@@ -128,6 +128,10 @@ const About = () => {
           {text}
         </button>
       </div>
+      {/* <div className="container border border-black border-3 rounded-pill my-5 p-5 bg-light">
+        <h5 className="py-2"><strong>Name:-</strong> Aayush Shah </h5>
+        <h5><strong>Contact:-</strong> 6355042785 </h5>
+      </div> */}
     </>
   );
 };

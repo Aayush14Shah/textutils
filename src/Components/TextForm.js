@@ -7,13 +7,13 @@ const TextForm = (props) => {
     e.preventDefault();
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert("coverted to uppercase", "success");
+    
   };
   const handleLowerCaseClick = (e) => {
     e.preventDefault();
     let newText = text.toLowerCase();
     setText(newText);
-    props.showAlert("coverted to lowercase", "success");
+    
   };
   // const handleAlternateCase = (e) => {
   //   e.preventDefault();
