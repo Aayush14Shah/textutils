@@ -1,18 +1,13 @@
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
-// import Alert from "./Components/Alert";
+import Alert from "./Components/Alert";
 import About from "./Components/About";
 import { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 function App() {
   const [mode, setMode] = useState("light");
-  // const [otherMode, setOtherMode] = useState("light");
   const [alert, setAlert] = useState("");
 
   const showAlert = (message, type) => {
@@ -24,6 +19,7 @@ function App() {
       setAlert("");
     }, 2000);
   };
+
   const toggleOtherMode = () => {
     if (mode !== "red") {
       setMode("red");
@@ -31,6 +27,7 @@ function App() {
       document.body.style.color = "white";
     }
   };
+
   const toggleOtherMode2 = () => {
     if (mode !== "green") {
       setMode("green");
@@ -38,6 +35,7 @@ function App() {
       document.body.style.color = "white";
     }
   };
+
   const toggleMode = () => {
     if (mode === "red" || mode === "green" || mode === "light") {
       setMode("dark");
@@ -51,36 +49,25 @@ function App() {
       showAlert("Light Mode has been enabled", "success");
     }
   };
+
   return (
     <>
-      {/* <Navbar title="Textutils aayush" /> */}
       <Router>
+       
           <Navbar
             mode={mode}
             toggleMode={toggleMode}
             toggleOtherMode={toggleOtherMode}
             toggleOtherMode2={toggleOtherMode2}
           />
-      {/* <Alert alert={alert} /> */}
-      <div className="container">
-       
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/">
-              <TextForm
-              heading="Enter your text to analyze"
-              showAlert={showAlert}
-              mode={mode}
-              toggleMode={toggleMode}
-              toggleOtherMode={toggleOtherMode}
-              toggleOtherMode2={toggleOtherMode2}
-              // otherMode={otherMode}
-            />
-          </Route>
-        </Switch>
-      </div>
+          <Alert alert={alert} />
+        
+        <div className="container">
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/" element={<TextForm showAlert={showAlert} mode={mode} toggleMode={toggleMode} toggleOtherMode={toggleOtherMode} toggleOtherMode2={toggleOtherMode2} />} />
+          </Routes>
+        </div>
       </Router>
     </>
   );
