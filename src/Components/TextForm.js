@@ -66,7 +66,8 @@ const TextForm = (props) => {
   };
   return (
     <>
-      <div className="container">
+      <div className={`container ${props.mode === "yellow" ? "text-black" : props.mode === "light"
+     ? "text-black" : "text-white"  }`}>
         <form>
           <h3 className=" m-2">{props.heading}</h3>
           <div className="m-3">
@@ -95,8 +96,8 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            } "btn-success" m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Convert to uppercase
           </button>
@@ -108,8 +109,8 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            } "btn-success" m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Convert to lowercase
           </button>
@@ -128,8 +129,8 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            }  m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Delete
           </button>
@@ -141,8 +142,8 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            }  m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Speak aloud
           </button>
@@ -154,8 +155,8 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            }  m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Capitalize
           </button>
@@ -167,7 +168,7 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
             } m-3`}
           >
             Reverse text
@@ -180,8 +181,8 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            }  m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Undo
           </button>
@@ -193,8 +194,8 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            }  m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Bold
           </button>
@@ -206,19 +207,20 @@ const TextForm = (props) => {
                 ? "btn-danger"
                 : props.mode === "green"
                 ? "btn-success"
-                : "btn-primary"
-            }  m-3`}
+                : props.mode === "yellow" ? "bg-black text-white" : "btn-primary"
+            } m-3`}
           >
             Italic
           </button>
         </form>
       </div>
-      <div className="container">
+      <div className={`container ${props.mode === "yellow" ? "text-black" : props.mode === "light"
+     ? "text-black" : "text-white"  }`}>
         <h1>Your text summary </h1>
         <p>
-          {text.split(" ").length - 1} words, {text.length} characters
+          {text.split(" ").filter((element) => {return element.length!==0}).length} words, {text.length} characters
         </p>
-        <p>{0.008 * text.split(" ").length} minutes to read</p>
+        <p>{0.008 * text.split(" ").filter((element) => {return element.length!==0}).length} minutes to read</p>
 
         <h3>Preview</h3>
         <p
@@ -230,14 +232,13 @@ const TextForm = (props) => {
             // height: "auto",
             // overflow: "scroll",
           }}
-          className={
+          className={`${
             props.mode === "red"
               ? "bg-danger"
               : props.mode === "green"
               ? "bg-success"
-              : "bg-#043b5c"
-          }
-          m-3
+              : props.mode === "yellow" ? "bg-black text-white" : "bg-primary"
+          } m-0`}
         >
           {text.length > 0 ? text : "Enter something above to preview here"}
         </p>

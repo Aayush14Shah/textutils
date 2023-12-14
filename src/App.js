@@ -2,9 +2,9 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import TextForm from "./Components/TextForm";
 import Alert from "./Components/Alert";
-// import About from "./Components/About";
+import About from "./Components/About";
 import { useState } from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -27,7 +27,13 @@ function App() {
       document.body.style.color = "white";
     }
   };
-
+  const toggleOtherMode3 = () => {
+    if (mode !== "yellow") {
+      setMode("yellow");
+      document.body.style.backgroundColor = "#FFC300";
+      document.body.style.color = "white";
+    }
+  };
   const toggleOtherMode2 = () => {
     if (mode !== "green") {
       setMode("green");
@@ -52,24 +58,27 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
        
           <Navbar
             mode={mode}
             toggleMode={toggleMode}
             toggleOtherMode={toggleOtherMode}
             toggleOtherMode2={toggleOtherMode2}
+            toggleOtherMode3={toggleOtherMode3}
           />
           <Alert alert={alert} />
         
         <div className="container">
-          {/* <Routes> */}
-            {/* <Route path="/about" element={<About />} /> */}
-            {/* <Route path="/" element={ } /> */}
-          {/* </Routes> */}
-          <TextForm heading="Analyze your text here" showAlert={showAlert} mode={mode} toggleMode={toggleMode} toggleOtherMode={toggleOtherMode} toggleOtherMode2={toggleOtherMode2} />
+          <Routes>
+            <Route path="/about" element={<About mode={mode}/>} />  
+            <Route path="/" element={<TextForm heading="Analyze your text here" showAlert={showAlert} 
+            mode={mode} toggleMode={toggleMode} toggleOtherMode={toggleOtherMode} 
+            toggleOtherMode2={toggleOtherMode2} toggleOtherMode3={toggleOtherMode3} /> } />
+          </Routes>
+          
         </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }

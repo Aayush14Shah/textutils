@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = (props) => {
   return (
@@ -11,12 +11,12 @@ const Navbar = (props) => {
         } bg-${props.mode !== "light" ? "dark" : "light"} `}
       >
         <div className="container-fluid">
-          {/* <Link className="navbar-brand" href="/">
+          <Link className="navbar-brand" href="/">
             {props.title}
-          </Link> */}
-          <a className="navbar-brand" href="#">
+          </Link>
+          {/* <a className="navbar-brand" href="#">
             {props.title}
-          </a>
+          </a> */}
           <button
             className="navbar-toggler"
             type="button"
@@ -31,18 +31,18 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                {/* <Link className="nav-link active" aria-current="page" to="/">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </Link> */}
-                 <a className="nav-link active" aria-current="page" href="#">
+                </Link>
+                 {/* <a className="nav-link active" aria-current="page" href="#">
                   Home
-                </a>
+                </a> */}
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                 <Link className="nav-link" to="/about">
                   About
                 </Link>
-              </li> */}
+              </li>
             </ul>
             <div className="d-inline-flex ">
               <div>
@@ -51,6 +51,14 @@ const Navbar = (props) => {
                   className="bg-danger border border-4 border-danger rounded-circle px-2 py-1 m-1"
                   style={{ width: "30px", height: "30px" }}
                   onClick={props.toggleOtherMode}
+                ></button>
+              </div>
+              <div>
+                {/* Yellow */}
+                <button
+                  className="bg-warning border border-4 border-warning rounded-circle px-2 py-1 m-1"
+                  style={{ width: "30px", height: "30px" }}
+                  onClick={props.toggleOtherMode3}
                 ></button>
               </div>
               <div>

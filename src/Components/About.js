@@ -1,27 +1,14 @@
-import React, { useState } from "react";
+import React from "react";  
 
-const About = () => {
-  const [myStyle, setMyStyle] = useState({
-    color: "white",
-    backgroundColor: "black",
-  });
-  const [text, setText] = useState("Enable Light Mode");
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (myStyle.color === "white") {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-      });
-      setText("Enable Dark Mode");
-    } else {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-      });
-      setText("Enable Dark Mode");
-    }
-  };
+const About = (props) => {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "white",
+  //   backgroundColor: "black",
+  // });
+  let myStyle = {
+    color: props.mode !== "light" ? "white" : "#042743",
+    backgroundColor: props.mode !== "light" ? "#042743" : "white",
+  }
   return (
     <>
       <div className="mt-5 p-5" style={myStyle}>
@@ -38,7 +25,7 @@ const About = () => {
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-                Accordion Item #1
+                Analyze your text
               </button>
             </h2>
             <div
@@ -47,15 +34,9 @@ const About = () => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-                <strong>This is the first item's accordion body.</strong> It is
-                shown by default, until the collapse plugin adds the appropriate
-                classNamees that we use to style each element. These classNamees
-                control the overall appearance, as well as the showing and
-                hiding via CSS transitions. You can modify any of this with
-                custom CSS or overriding our default variables. It's also worth
-                noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+              A text analyzer is a tool that examines written content to understand its key elements, such as words, 
+              sentences, and sentiments. This tool is valuable for improving writing quality, ensuring clarity, and 
+              saving time in the editing process.
               </div>
             </div>
           </div>
@@ -70,7 +51,7 @@ const About = () => {
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                Accordion Item #2
+                Free to use
               </button>
             </h2>
             <div
@@ -79,15 +60,11 @@ const About = () => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-                <strong>This is the second item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
-                appropriate classNamees that we use to style each element. These
-                classNamees control the overall appearance, as well as the
-                showing and hiding via CSS transitions. You can modify any of
-                this with custom CSS or overriding our default variables. It's
-                also worth noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+              A service or product can be accessed and utilized without any cost or payment. 
+              In the context of software or online tools, a "free to use" text analyzer implies 
+              that users can enjoy its features and benefits without incurring any charges. 
+              This accessibility makes it convenient for individuals and businesses to enhance their 
+              writing without the burden of additional expenses.
               </div>
             </div>
           </div>
@@ -102,7 +79,7 @@ const About = () => {
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-                Accordion Item #3
+                Browser Compatible
               </button>
             </h2>
             <div
@@ -111,27 +88,14 @@ const About = () => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-                <strong>This is the third item's accordion body.</strong> It is
-                hidden by default, until the collapse plugin adds the
-                appropriate classNamees that we use to style each element. These
-                classNamees control the overall appearance, as well as the
-                showing and hiding via CSS transitions. You can modify any of
-                this with custom CSS or overriding our default variables. It's
-                also worth noting that just about any HTML can go within the{" "}
-                <code>.accordion-body</code>, though the transition does limit
-                overflow.
+              Browser compatibility refers to how well a website or online application 
+              performs across different web browsers. To create content that functions seamlessly across various browsers, 
+              enhancing accessibility and usability for a diverse audience.
               </div>
             </div>
           </div>
         </div>
-        <button onClick={handleClick} className="btn btn-primary mt-4">
-          {text}
-        </button>
       </div>
-      {/* <div className="container border border-black border-3 rounded-pill my-5 p-5 bg-light">
-        <h5 className="py-2"><strong>Name:-</strong> Aayush Shah </h5>
-        <h5><strong>Contact:-</strong> 6355042785 </h5>
-      </div> */}
     </>
   );
 };
