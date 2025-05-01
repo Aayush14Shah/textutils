@@ -6,17 +6,16 @@ const Navbar = (props) => {
   return (
     <div>
       <nav
-        className={`navbar navbar-expand-lg  navbar-${
+        className={`navbar navbar-expand-lg navbar-${
           props.mode !== "light" ? "dark" : "light"
-        } bg-${props.mode !== "light" ? "dark" : "light"} `}
+        } bg-${
+          props.mode === "red" ? "danger" : props.mode === "green" ? "success" : props.mode === "yellow" ? "warning" : props.mode
+        }`}
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             {props.title}
           </Link>
-          {/* <a className="navbar-brand" href="#">
-            {props.title}
-          </a> */}
           <button
             className="navbar-toggler"
             type="button"
@@ -31,12 +30,9 @@ const Navbar = (props) => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <Link className="nav-link" aria-current="page" to="/">
                   Home
                 </Link>
-                 {/* <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a> */}
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/about">
@@ -44,35 +40,22 @@ const Navbar = (props) => {
                 </Link>
               </li>
             </ul>
-            <div className="d-inline-flex ">
-              <div>
-                {/* red */}
-                <button
-                  className="bg-danger border border-4 border-danger rounded-circle px-2 py-1 m-1"
-                  style={{ width: "30px", height: "30px" }}
-                  onClick={props.toggleOtherMode}
-                ></button>
-              </div>
-              <div>
-                {/* Yellow */}
-                <button
-                  className="bg-warning border border-4 border-warning rounded-circle px-2 py-1 m-1"
-                  style={{ width: "30px", height: "30px" }}
-                  onClick={props.toggleOtherMode3}
-                ></button>
-              </div>
-              <div>
-                {/* green */}
-                <button
-                  className="bg-success border border-4 border-success rounded-circle px-2 py-1 m-1"
-                  style={{ width: "30px", height: "30px" }}
-                  onClick={props.toggleOtherMode2}
-                ></button>
-              </div>
-              {/* <div
-                className="bg-warning border border-4 border-warning rounded-circle px-2 py-1 m-1"
-                style={{ width: "30px", height: "30px" }}
-              ></div> */}
+            <div className="d-inline-flex">
+              <button
+                className="bg-[#e57373] border border-4 border-[#e57373] rounded-circle px-2 py-1 m-1 hover:opacity-80"
+                style={{ width: "30px", height: "30px", backgroundColor: "#e57373" }}
+                onClick={props.toggleOtherMode}
+              ></button>
+              <button
+                className="bg-[#fff176] border border-4 border-[#fff176] rounded-circle px-2 py-1 m-1 hover:opacity-80"
+                style={{ width: "30px", height: "30px", backgroundColor: "#fff176" }}
+                onClick={props.toggleOtherMode3}
+              ></button>
+              <button
+                className="bg-[#66bb6a] border border-4 border-[#66bb6a] rounded-circle px-2 py-1 m-1 hover:opacity-80"
+                style={{ width: "30px", height: "30px", backgroundColor: "#66bb6a" }}
+                onClick={props.toggleOtherMode2}
+              ></button>
             </div>
             <div className="form-check form-switch">
               <input
@@ -84,24 +67,13 @@ const Navbar = (props) => {
               />
               <label
                 className={`form-check-label text-${
-                  props.mode === "light" ? "dark" : "light"
+                  props.mode === "light" || props.mode === "yellow" ? "dark" : "light"
                 }`}
                 htmlFor="flexSwitchCheckDefault"
               >
-                Enable Darkmode
+                Enable Dark Mode
               </label>
             </div>
-            {/* <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-primary" type="submit">
-                Search
-              </button>
-            </form> */}
           </div>
         </div>
       </nav>
@@ -111,5 +83,4 @@ const Navbar = (props) => {
 
 export default Navbar;
 Navbar.propTypes = { title: PropTypes.string };
-
-Navbar.defaultProps = { title: "Textutils" };
+Navbar.defaultProps = { title: "TextUtils" };

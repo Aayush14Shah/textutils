@@ -1,18 +1,15 @@
-import React from "react";  
+import React from "react";
 
 const About = (props) => {
-  // const [myStyle, setMyStyle] = useState({
-  //   color: "white",
-  //   backgroundColor: "black",
-  // });
   let myStyle = {
-    color: props.mode !== "light" ? "white" : "#042743",
-    backgroundColor: props.mode !== "light" ? "#042743" : "white",
-  }
+    color: props.mode === "light" || props.mode === "yellow" ? "#042743" : "white",
+    backgroundColor: props.mode === "light" ? "white" : props.mode === "yellow" ? "#fff176" : props.mode === "red" ? "#e57373" : "#66bb6a",
+  };
+
   return (
     <>
       <div className="mt-5 p-5" style={myStyle}>
-        <h2>About us:- </h2>
+        <h2>About TextUtils</h2>
         <div className="accordion" id="accordionExample" style={myStyle}>
           <div className="accordion-item">
             <h2 className="accordion-header">
@@ -25,7 +22,7 @@ const About = (props) => {
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-                Analyze your text
+                Powerful Text Manipulation
               </button>
             </h2>
             <div
@@ -34,9 +31,7 @@ const About = (props) => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-              A text analyzer is a tool that examines written content to understand its key elements, such as words, 
-              sentences, and sentiments. This tool is valuable for improving writing quality, ensuring clarity, and 
-              saving time in the editing process.
+                TextUtils provides a suite of tools to transform your text effortlessly. Convert text to uppercase, lowercase, or capitalize words, reverse text, or apply styling like bold and italic. Our intuitive interface makes text editing quick and efficient, perfect for writers, students, and professionals.
               </div>
             </div>
           </div>
@@ -51,7 +46,7 @@ const About = (props) => {
                 aria-expanded="false"
                 aria-controls="collapseTwo"
               >
-                Free to use
+                Free and Accessible
               </button>
             </h2>
             <div
@@ -60,11 +55,7 @@ const About = (props) => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-              A service or product can be accessed and utilized without any cost or payment. 
-              In the context of software or online tools, a "free to use" text analyzer implies 
-              that users can enjoy its features and benefits without incurring any charges. 
-              This accessibility makes it convenient for individuals and businesses to enhance their 
-              writing without the burden of additional expenses.
+                TextUtils is completely free to use, with no hidden costs. Whether you're editing a single sentence or a lengthy document, our platform is designed to be accessible to everyone, helping you enhance your writing without any financial barriers.
               </div>
             </div>
           </div>
@@ -79,7 +70,7 @@ const About = (props) => {
                 aria-expanded="false"
                 aria-controls="collapseThree"
               >
-                Browser Compatible
+                Browser-Compatible and User-Friendly
               </button>
             </h2>
             <div
@@ -88,9 +79,7 @@ const About = (props) => {
               data-bs-parent="#accordionExample"
             >
               <div className="accordion-body" style={myStyle}>
-              Browser compatibility refers to how well a website or online application 
-              performs across different web browsers. To create content that functions seamlessly across various browsers, 
-              enhancing accessibility and usability for a diverse audience.
+                TextUtils is built to work seamlessly across all major web browsers, ensuring a consistent experience whether you're on Chrome, Firefox, Safari, or Edge. With features like text-to-speech, undo functionality, and customizable themes, our platform is designed for ease of use and maximum productivity.
               </div>
             </div>
           </div>
